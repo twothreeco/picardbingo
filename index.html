@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- insert tailwind cdn here-->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+    <title>Picard Finale Bingo</title>
+</head>
+
+<body class="mx-auto container">
+    <h1 class="w-auto mx-auto text-sky-400">Picard Finale Bingo</h1>
+    <p class="mb-12 mx-auto text-2xl">Printable bingo card! Get 4 in a row or a column. Instant promotion to Fleet Admiral for a full house!</p>
+    <div id="bingo-grid">
+        <!-- Bingo grid will be generated here -->
+    </div>
+    <script>
+        // Add JavaScript code here
+        const phrases = [
+            "Wesley cameo (voice)",
+            "Wesley seen in still photo",
+            "Wesley cameo (live action)",
+            "Visit the holodeck",
+            "Miles O'Brien cameo",
+            "DS9 character cameo (not O'Brien)",
+            "Denise Crosby cameo",
+            "Poker",
+            "Someone says \'all good things...\'",
+            "Q",
+            "Soji somehow",
+            "Legacy character death",
+            "Legacy character resurrection",
+            "Shaw of Borg",
+            "1701-D doesnt survive",
+            "Any other non-networked ship joins the fight",
+            "Voyager character cameo",
+            "Field commission, promotion or demotion",
+            "Warp core breach",
+            "Geordi La Forge wife reveal",
+            "De-aging",
+            "Alexander Rozhenko mention",
+            "Laris appears",
+            "Farpoint mentioned",
+            "Kestra confirmed alive",
+            "Emergency medical hologram",
+            "Barclay reference",
+            "Riker trombone",
+            "Guinan cameo",
+            "Flashback using old footage",
+            "Tea, early grey, hot",
+            "Worf mentions Jadzia",
+            "Alice Krige face reveal",
+            "Unexpected Assimilation",
+            "Calling in a favour from an old friend",
+
+
+            // ... Add more phrases
+        ];
+
+        function getRandomPhrases() {
+            const randomPhrases = [];
+            for (let i = 0; i < 16; i++) {
+                const randomIndex = Math.floor(Math.random() * phrases.length);
+                randomPhrases.push(phrases[randomIndex]);
+            }
+            return randomPhrases;
+        }
+
+        function generateBingoGrid() {
+            const randomPhrases = getRandomPhrases();
+            const grid = document.getElementById("bingo-grid");
+            randomPhrases.forEach((phrase) => {
+                const square = document.createElement("div");
+                square.classList.add("bingo-square");
+                square.innerText = phrase;
+                grid.appendChild(square);
+            });
+        }
+
+        generateBingoGrid();
+
+        //listen for click on a square and trigger a function which toggles a class on that square
+        var sq = document.getElementsByClassName("bingo-square");
+        for (var i = 0; i < sq.length; i++) {
+            sq[i].addEventListener("click", function () {
+                this.classList.toggle("selected");
+            });
+        }
+// document.addEventListener("click", function (event) {
+//     if (event.target.classList.contains("bingo-square")) {
+//         event.target.classList.toggle("selected");
+//     }
+    </script>
+</body>
+
+</html>
