@@ -64,11 +64,14 @@
 
         function getRandomPhrases() {
             const randomPhrases = [];
-            for (let i = 0; i < 16; i++) {
-                const randomIndex = Math.floor(Math.random() * phrases.length);
-                randomPhrases.push(phrases[randomIndex]);
-            }
-            return randomPhrases;
+  const phrasesCopy = [...phrases]; // Create a copy of the phrases array
+
+  for (let i = 0; i < 20 && phrasesCopy.length > 0; i++) {
+    const randomIndex = Math.floor(Math.random() * phrasesCopy.length);
+    randomPhrases.push(phrasesCopy[randomIndex]);
+    phrasesCopy.splice(randomIndex, 1); // Remove the selected phrase
+  }
+  return randomPhrases;
         }
 
         function generateBingoGrid() {
